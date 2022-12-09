@@ -1,4 +1,4 @@
-"""config URL Configuration
+"""euro_testt URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rent.views import reservation_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', reservation_view)
 ]

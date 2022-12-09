@@ -1,0 +1,32 @@
+{% load get_from_dict_filter %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Rental name</th>
+                <th>ID</th>
+                <th>Checkin</th>
+                <th>Checkout</th>
+                <th>Previous reservation, ID</th>
+            </tr>
+        </thead>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.rental.name }}</td>
+                <td>Res-{{ reservation.id }}</td>
+                <td>{{ reservation.checkin }}</td>
+                <td>{{ reservation.checkout }}</td>
+                <td>{{ prev_reservations|get_value:reservation.id }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
