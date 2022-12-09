@@ -16,7 +16,9 @@ def reservation_view(request):
 
     return render(
         request,
-        'index.html',
-        context={"reservations": all_reservations, 'prev_reservations': prev_reservations})
-
-
+        "index.html",
+        context={
+            "reservations": all_reservations,
+            "prev_reservations": prev_reservations,
+        },
+    )

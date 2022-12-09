@@ -17,7 +17,4 @@ from django.contrib import admin
 from django.urls import path
 from rent.views import reservation_view
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('', reservation_view)
-]
+urlpatterns = [path("admin/", admin.site.urls), path("", reservation_view)]
