@@ -1,0 +1,7 @@
+venv
+.idea
+__pycache__
+rent/__pycache__
+rent/migrations/0*
+rent/migrations/__pycache__
+db.sqlite3
