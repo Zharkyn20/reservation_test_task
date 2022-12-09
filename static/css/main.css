@@ -1,0 +1,35 @@
+table {
+  width: 70%;
+  margin-bottom: 20px;
+    border-spacing: 0;
+    border-collapse: separate;
+    overflow: hidden;
+
+}
+
+table th {
+  font-weight: bold;
+  padding: 10px 20px;
+  background: #5B5B5B;
+    color: white;
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+table td {
+  border: 1px solid #dddddd;
+  padding: 10px 20px;
+    text-align: center;
+}
+
+table thead tr th:first-child {
+  border-radius: 10px 0 0 0;
+}
+table thead tr th:last-child {
+  border-radius: 0 10px 0 0;
+}
+table tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 10px;
+}
+table tbody tr:last-child td:last-child {
+  border-radius: 0 0 10px 0;
+}
