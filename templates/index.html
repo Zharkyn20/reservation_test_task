@@ -25,7 +25,13 @@
                 <td>Res-{{ reservation.id }}</td>
                 <td>{{ reservation.checkin }}</td>
                 <td>{{ reservation.checkout }}</td>
-                <td>{{ prev_reservations|get_value:reservation.id }}</td>
+                <td>
+                    {% if reservation.previous_reservation %}
+                        Res-{{ reservation.previous_reservation }}
+                    {% else %}
+                         -
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
     </table>

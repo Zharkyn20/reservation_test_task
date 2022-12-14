@@ -1,24 +1,24 @@
 from django.shortcuts import render
+from django.db.models import Subquery, OuterRef
 
-from rent.models import Reservation, Rental
-from rent.utils import link_previous
+from rent.models import Reservation
 
 
 def reservation_view(request):
-    rentals = Rental.objects.all()
-    all_reservations = Reservation.objects.none()
-    prev_reservations = {}
-
-    for rental in rentals:
-        reservations = Reservation.objects.filter(rental=rental)
-        all_reservations |= reservations
-        prev_reservations |= link_previous(reservations)
-
+    reservations = Reservation.objects.all().order_by('rental_id', 'checkin').annotate(
+        previous_reservation=Subquery(
+            Reservation.objects
+            .filter(
+                rental=OuterRef('rental'),
+                checkin__lt=OuterRef('checkin')
+            )
+            .order_by('-checkin')
+            .values('id')
+        ))
     return render(
         request,
         "index.html",
         context={
-            "reservations": all_reservations,
-            "prev_reservations": prev_reservations,
-        },
+            "reservations": reservations,
+        }
     )
